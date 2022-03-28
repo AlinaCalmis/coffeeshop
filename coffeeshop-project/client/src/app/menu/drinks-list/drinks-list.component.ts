@@ -30,13 +30,11 @@ export class DrinksListComponent implements OnInit {
   }
 
   sortDrinksByAll(criteria: string): void {
-    // this.route.params.subscribe(params => {
-      this.criteria = criteria;
+    this.criteria = criteria;
     console.log(this.criteria);
     this.drinks = this.menuService.getDrinksSorted(criteria);
     console.log(this.drinks);
     this.criteria = '';
-    // ;})wdq
     
   }
 
