@@ -1,0 +1,66 @@
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">Contact Us</h1>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <form (ngSubmit)="submitForm()" #contactForm="ngForm">
+            <div class="field">
+                <label class="label"> Name</label>
+                <input 
+                    type="text" 
+                    name="name" 
+                    class="input" 
+                    [(ngModel)]="name" 
+                    #nameInput ="ngModel"
+                    required>
+
+                <div class="help is-error" *ngIf="nameInput.invalid && nameInput.touched">
+                    Your name is required.
+                </div>
+
+            </div>
+            <div class="field">
+                <label class="label"> Email</label>
+                <input 
+                    type="email" 
+                    name="email" 
+                    class="input" 
+                    #emailInput="ngModel"
+                    [(ngModel)]="email"
+                    required>
+
+                <div class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">
+                    Your email is required.
+                </div>
+
+            </div>
+            <div class="field">
+                <label class="label"> Your message</label>
+                <textarea 
+                name="message" 
+                class="textarea" 
+                #messageInput="ngModel"
+                [(ngModel)]="message"
+                required></textarea>
+
+                <div class="help is-error" *ngIf="messageInput.invalid && messageInput.touched">
+                    Please tell us your opinion.
+                </div>
+
+            </div>
+            <button 
+                type="submit" 
+                class="button is-large is-warning"
+                [disabled]="contactForm.invalid">
+                Send
+            </button>
+            
+        </form>
+    </div>
+</section>

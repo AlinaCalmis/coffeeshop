@@ -1,0 +1,130 @@
+<section class="section">
+    <div class="container"> 
+        <div class="card" *ngIf="drink">
+            <div class="card-content">
+                <div class="content">
+                     <div class="columns is-multiline">
+                         <div class="column is-narrow">
+                            <div class="card-image">
+                                <figure class="image ">
+                                    <img class="is-rounded" src="../../assets/img/{{drink.prod_name}}.jpg">
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="level">
+                                    <div class="level-item  has-text-left">
+                                        <p class="heading is-size-4">{{drink.prod_name}}</p>
+                                    </div>
+                                    <div class="level-item  has-text-right">
+                                        <div>
+                                            <p class="heading">Likes</p>
+                                            <p class="heading is-size-4">{{drink.likes}} 
+                                                <span class=" has-text-danger is-clickable" (click)="getLikesCounter()">&#x2764;</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="level-item  has-text-right">
+                                        <div>
+                                            <p class="heading">Dislikes</p>
+                                            <p class="heading is-size-4">{{drink.dislikes}}
+                                                <span class="has-text-grey-lighter is-clickable" (click)="getDislikesCounter()">&#x2764;</span></p>
+                                        </div>
+                                    </div>
+                            </div>
+                            <hr>
+                            <div class="level"> 
+                                <div class="level-item">
+                                    <div>
+                                        <p class="heading">Description: </p>
+                                        <p >{{drink.descript}}</p>
+                                    </div>
+                                </div>
+                                <div class="level-item has-text-centered">
+                                    <div>
+                                        <p class="heading">Price</p>
+                                        <p class="is-size-5">{{drink.price}} LEI</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <p class="heading is-size-4">Our people say:</p>
+    <hr>
+    <div class="container">
+        <div class="block">
+        <!-- Display Commentaries -->
+            <div *ngIf="comments">
+                <div *ngFor="let comment of comments">
+                    <div class="card " *ngIf="drink" id="comment-card">
+                        <div class="card-content">
+                            <div class="content">
+                                <div class="block">
+                                    <p class="heading">Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="is-capitalized is-size-6">{{comment.username}}</span></p>
+                                </div>
+                                <hr>
+                                <div class="block">
+                                    <p class="heading">Comment:</p>
+                                        <p class="is-capitalized is-size-6">{{comment.comment_text}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <hr>
+        <h1 class="title">Tell us your thoughts: </h1>
+        <h2 class="subtitle">
+            We hope you had a great stay at our coffeshop, and we'll see you soon!
+        </h2>
+
+        <!-- Comment Form -->
+
+        <form (ngSubmit)="submitForm()" #contactForm="ngForm">
+            <div class="field">
+                <label class="label"> Name</label>
+                <input 
+                    type="text" 
+                    name="name" 
+                    class="input" 
+                    [(ngModel)]="name" 
+                    #nameInput ="ngModel"
+                    required>
+
+                <div class="help is-error" *ngIf="nameInput.invalid && nameInput.touched">
+                    Your name is required.
+                </div>
+
+            </div>
+            <div class="field">
+                <label class="label"> Your comment:</label>
+                <textarea 
+                name="message" 
+                class="textarea" 
+                #messageInput="ngModel"
+                [(ngModel)]="message"
+                required></textarea>
+
+                <div class="help is-error" *ngIf="messageInput.invalid && messageInput.touched">
+                    Please tell us your opinion.
+                </div>
+
+            </div>
+            <button 
+                type="submit" 
+                class="button is-large is-warning"
+                [disabled]="contactForm.invalid">
+                Send
+            </button>
+            
+        </form>
+    </div>
+</section>

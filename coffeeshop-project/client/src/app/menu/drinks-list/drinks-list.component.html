@@ -1,0 +1,104 @@
+<section class="section">
+  <hr>
+    <nav class="level">
+        <p class="level-item has-text-centered">
+          <a class="link is-info has-text-black-bis	is-uppercase" (click)="sortDrinksByAll('coffee')">Coffee</a>
+        </p>
+        <p class="level-item has-text-centered">
+          <a class="link is-info has-text-black-bis	is-uppercase" (click)="sortDrinksByAll('tea')">Tea</a>
+        </p>
+        <p class="level-item has-text-centered">
+          <a class="link is-info has-text-grey-darker is-uppercase" (click)="sortDrinksByAll('others')">Other</a>
+        </p>
+        <p class="level-item has-text-centered">
+          <input class="input is-rounded is-medium" style="width:50%" type="text" placeholder="Search..." (change)="searchDrink($event)">
+        </p>
+      </nav>
+      <hr>
+</section>
+<section class="section">
+    <div class="container" *ngIf="drinks">
+        <div class="block" *ngFor="let drink of drinks | async">
+            <div class="card p-2 is-clickable">
+                <div class="card-content" >
+                    <div class="content" >
+                        <div class="columns is-multiline" >
+                            <div class="column is-narrow">
+                                <div class="card-image">
+                                    <figure class="image is-128x128">
+                                    <img
+                                        src="../../assets/img/{{drink.prod_name}}.jpg"
+                                        alt="Placeholder image" routerLink="/menu/drinks/{{drink.prod_id}}"
+                                    />
+                                    </figure>
+                                    <div class="media-content has-text-centered">
+                                    <p class="title is-4">
+                                        {{drink.prod_name}}
+                                    </p>
+                                    <p class="subtitle is-6">@{{drink.subtype}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <nav class="level">
+                                    <div class="level-item has-text-centered">
+                                        <div>
+                                            <p class="heading">Drink Type</p>
+                                            <p class="title is-uppercase">{{drink.subtype}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="level-item has-text-centered">
+                                        <div>
+                                            <p class="heading">Likes</p>
+                                            <p class="title">{{drink.likes}} &#x2764;</p>
+                                        </div>
+                                    </div>
+                                    <div class="level-item has-text-centered">
+                                        <div>
+                                            <p class="heading">Price</p>
+                                            <p class="title">{{drink.price}} Lei</p>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <footer class="card-footer">
+
+                                    <div class="column pt-6">
+                                        <p class="heading is-size-6">
+                                            {{drink.descript}}
+                                        </p>
+                                    </div>
+                                    <!-- <a href="#" class="card-footer-item has-text-centered">message</a>
+                                    <a href="#" class="card-footer-item has-text-centered">follow</a>
+                                    <a href="#" class="card-footer-item has-text-centered">edit</a>
+                                    <a href="#" class="card-footer-item has-text-centered">change password</a> -->
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- <section class="section">
+    <div class="container">
+      <div class="columns is-multiline" *ngIf="drinks">
+        <div class="column is-3" *ngFor="let drink of drinks | async"> 
+           extrage numele din -->
+          <!-- <div class="card is-clickable">
+              <a routerLink="/menu/drinks/{{drink.prod_id}}">
+            <div class="card-image">
+              <figure class="image is-square">
+                <img src="../../assets/img/{{drink.prod_name}}.jpg">
+              </figure>
+            </div>
+            <div class="card-content">
+              <p class="title is-5"> {{drink.prod_name}} <span class="is-pulled-right has-text-weight-light">{{drink.price}} Lei</span></p> 
+            </div>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
