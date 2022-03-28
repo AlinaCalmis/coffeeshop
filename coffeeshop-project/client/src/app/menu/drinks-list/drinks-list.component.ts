@@ -46,10 +46,4 @@ export class DrinksListComponent implements OnInit {
     this.drinks = this.menuService.serach(this.search)
     this.search = '';
   }
-
-  // sortDrinksByCoffee(): void {
-  //   console.log("Cofeee");
-  //   // this.drinks = this.menuService.getDrinks()
-  //   this.drinks = this.menuService.getCoffeeDrinks();
-  // }
 }
